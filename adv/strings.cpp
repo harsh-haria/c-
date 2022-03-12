@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<algorithm>
 
 using namespace std;
 
@@ -56,4 +57,43 @@ int main(){
     cout<<str12<<endl;
     str12.erase(0,3);
     cout<<str12<<endl;
-}
+
+    //find can be used to find a specific substring 
+    string str13 = "Nincompoop";
+    cout<< str13.find("com")<<endl; //returns the starting address of the substring
+    cout<< str13.find("poop")<<endl; //returns the starting address of the substring
+
+    //insert
+    str13.insert(2,"lol"); //str13.insert(<position>,<string>)
+    cout<<str13<<endl;
+
+    //length
+    cout<< str13.size()<<endl; //no parameters just string_name.size()
+    cout<< str13.length()<<endl; // both are same
+
+    for(int i=0;i<str13.length();i++){
+        cout<< str13[i] << " ";
+    }
+    cout<<endl;
+
+    //sub string extraction
+    string s1 = "nincompoop";
+    string s = s1.substr(6,4);
+    cout<< s <<endl;
+
+    //int(inside a string) to int
+    string s2 = "9";
+    int x = stoi(s2);
+    cout<<x+1<<endl;
+
+    //from int to string
+    int y = 9981;
+    cout<< to_string(y)+"9981"<<endl;
+
+    //sorting
+    //add #include<algorithm>
+    //characters will be sorted lexicographically
+    string s3 = "sfurehflgsebrgbsdjlfgbljsdpiruhgpierdirgbsejbrglkjdrjgk";
+    sort(s3.begin(),s3.end());
+    cout<<s3<<endl;
+} 
