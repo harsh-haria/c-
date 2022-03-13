@@ -3,10 +3,7 @@
 using namespace std;
 
 int main(){
-    string x = "";
-    x+='a';
-    int a = stoi(x);
-
-    cout<<x<<endl;
-    cout<<a+1;
+    cout<<1-3<<endl;
+    int newstr = abs(1-3);
+    cout<<newstr;
 }
