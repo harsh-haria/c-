@@ -86,4 +86,5 @@ string binadd(string s, string t){
         len--;
     }
     return to_string(carry) + output;
+    
 }
