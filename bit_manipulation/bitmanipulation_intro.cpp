@@ -2,7 +2,7 @@
 using namespace std;
 
 int getbit(int n, int pos){
-    return ((n & (1<<pos))!=0);
+    return (n & (1<<pos))!=0;
 }
 
 int setbit(int n, int pos){
@@ -25,7 +25,7 @@ int updatebitmanual(int n, int pos, int value){// first clear and then use set b
 
 int main(){
 
-    cout << getbit(5, 2) << endl;
+    cout << getbit(3, 2) << endl;
     cout << setbit(5, 1) << endl;
     cout << clearbit(5, 2) << endl;
     cout << updatebit(5,3)<<endl;
