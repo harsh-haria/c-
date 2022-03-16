@@ -56,7 +56,7 @@ int main(){
         maxi = max(maxi,a[i]);
     }
     string boundary = bi2dec(to_string(maxi));
-    cout<<"Boundry: "<<boundary<<endl;
+    // cout<<"Boundry: "<<boundary<<endl;
     int flag = 0;
     int count=0;
     for(int i=0;i<boundary.length();i++){
@@ -72,7 +72,7 @@ int main(){
             count++;
         }
     }
-    cout<<"count: "<<count<<endl;
+    // cout<<"count: "<<count<<endl;
     for(int i=0;i<n;i++){
         for(int j=0;j<count;j++){
             if((a[i] & (1<<j))!=0){
