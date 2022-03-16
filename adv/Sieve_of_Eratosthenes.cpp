@@ -29,22 +29,44 @@ void do_it(int *a,bool *b,int n){
     }
 }
 
+void do_it_v2(int n){ //second and better way
+    cout<<"v2: ";
+    int prime[100] = {0};
+    for(int i=2;i<=n;i++){
+        if(prime[i]==0){
+            for(int j=i*i;j<=n;j+=i){
+                prime[j] = 1;
+            }
+        }
+    }
+    for(int i=2;i<n;i++){
+        if(prime[i]==0){
+            cout<<i<<" ";
+        }
+    }
+}
+
 int main(){
     int n;
     cin>>n;
     int prime1[n+1]={0};
     bool prime2[n+1]={0};
-    
+
     for(int i=0;i<=n;i++){
         prime1[i]=i;
     }
     
     do_it(prime1,prime2,n);
-
+    
     for(int i=2;i<=n;i++){
         if(prime2[i]==0){
             cout<<i<<" ";
         }
     }
+
+    cout<<endl;
+    
+    do_it_v2(n);
+
     return 0;
 }
