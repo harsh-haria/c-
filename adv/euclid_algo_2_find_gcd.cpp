@@ -1,4 +1,5 @@
 // refer 15.2 for explanation hehehe 
+//can also be done by prime factorization however euclid algo is much faster
 #include<iostream>
 using namespace std;
 
