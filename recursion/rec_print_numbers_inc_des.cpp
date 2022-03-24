@@ -18,7 +18,6 @@ void print_inc(int n){
 }
 
 int main(){
-
     int n;
     cin>>n;
     print_inc(n);

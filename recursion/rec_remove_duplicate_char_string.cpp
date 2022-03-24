@@ -3,7 +3,7 @@ the recursive function should remove the repeated alphabets and print the charac
 #include<iostream>
 using namespace std;
 
-void remove_it(string s,char c){
+void remove_it(string s,char c){ //*
     if(s[0]=='\0'){
         return ;
     }
@@ -16,7 +16,7 @@ void remove_it(string s,char c){
     }
 }
 
-string removeDup(string s){
+string removeDup(string s){ //+
     if(s.length()==0){
         return "";
     }
@@ -35,5 +35,5 @@ int main(){
 
     remove_it(s,'\n');
     cout<<endl;
-    removeDup(s);
+    cout<<removeDup(s)<<endl;
 }

@@ -22,10 +22,5 @@ string bi2dec(string s){
 }
 
 int main(){
-    int a[] = {1,4,7,2,5,9,1};
-    string s = "harsh";
-    sort(s.begin(),s.end());
-    cout<<s<<endl;
-    cout<<'a'<<" "<<(int)'a'-96<<endl;
-    cout<<'z'<<" "<<(char)'z'-96;
+    cout<<(3 ^ 4);
 }
