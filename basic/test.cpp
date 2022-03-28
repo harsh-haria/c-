@@ -22,5 +22,8 @@ string bi2dec(string s){
 }
 
 int main(){
-    cout<<(3 ^ 4);
+    auto x = 5;
+    auto p = 5.3;
+    auto a="c++";
+    cout<<x+p<<" "<<a<<endl;
 }

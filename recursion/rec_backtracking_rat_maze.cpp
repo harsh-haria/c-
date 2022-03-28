@@ -75,5 +75,4 @@ int main(){
             cout<<endl;
         }
     }
-
 }
