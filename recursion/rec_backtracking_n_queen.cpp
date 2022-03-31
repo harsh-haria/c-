@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+//not working for some inputs like 6,8 etc
+//did work for other inputs :)
+//4 5 7 worked fine 0 
 bool isSafe(int **arr, int x, int y, int n)
 {
 
