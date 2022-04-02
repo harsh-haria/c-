@@ -24,8 +24,7 @@ void countSort(int n, int arr[], int ans[]){
     then we go to index 3 in position array and decrement it
     the number we get after we decrement is the index where we will store 3 in new array i.e. ans[]
     */
-        position[arr[i]]--;
-        ans[position[arr[i]]] = arr[i];
+        ans[--position[arr[i]]] = arr[i];
     }
 }
 
