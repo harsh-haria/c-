@@ -27,7 +27,8 @@ class student{
 
     student(student &address){
         //when we create a copy constructor on our own, this works as deep copy.
-        //if we use the default copy provided then it will perform shallow copy i.e. values will be copied not pointers
+        //if we use the default copy provided then it will perform shallow copy i.e. pointers will be copied not just values
+        //both original and object point to the same reference if shallow copy
         cout<<"Default copy constructor "<<endl;
         name = address.name;
         age = address.age;
