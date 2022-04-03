@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 //20.1
+//time complexity is O(max(Ai,N)); where Ai is the max element and N is number of elements in the array
+
 void countSort(int n, int arr[], int ans[]){
     
     int maxInt = INT_MIN;
