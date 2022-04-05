@@ -55,6 +55,27 @@ bool searchList(node * head, int key){
     return false;
 }
 
+void deleteNode(node * &head, int val){
+
+    if(head==NULL){
+        cout<<"Nothing to Delete"<<endl;
+        return;
+    }
+
+    node * temp = head;
+    if(temp->data==val){
+        node * headtodelete = head;
+        head = temp->next;
+        delete headtodelete; //helps to avoid memory leak
+        return;
+    }
+    while((temp->next)->data!=val){
+        temp = temp->next;
+    }
+    node * todelete = temp->next;
+    temp->next = (temp->next)->next;
+    delete todelete; //works like free() we had in c which is used to free the space in heap
+}
 
 int main(){
 
@@ -69,4 +90,10 @@ int main(){
     display(head);
     cout<<searchList(head, 5)<<endl;
     cout<<searchList(head,0)<<endl;
+    deleteNode(head,3);
+    display(head);
+    deleteNode(head,1);
+    display(head);
+    deleteNode(head,4);
+    display(head);
 }
