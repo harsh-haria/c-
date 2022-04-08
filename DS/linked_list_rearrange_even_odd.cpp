@@ -1,6 +1,8 @@
+//arrange the nodes of the linked list in a odd even order 
 #include<iostream>
+#include "a.h"
 using namespace std;
-
+//program is still buggy
 class node{
     public:
         int data;
@@ -19,7 +21,6 @@ void insertAtHead(node * &head, int val){
 }
 
 void insertAtTale(node * &head, int val){// &head bcz we will be modifying the head
-
     node * n = new node(val);
 
     if(head==NULL){
@@ -77,22 +78,43 @@ void deleteNode(node * &head, int val){
     delete todelete; //works like free() we had in c which is used to free the space in heap
 }
 
+node* odd_even(node * &head){
+    node * temp = head;
+    node * odd = head;
+    node * even = head->next;
+    node * evenStart = even;
+    while(odd->next!=NULL && even->next!=NULL){
+        odd->next = even->next;
+        odd = odd->next;
+        even->next = odd->next;
+        even = even->next;
+    }
+    odd->next = evenStart;
+    if(odd->next!=NULL){
+        even->next = NULL;
+    }
+    // return head;
+    cout<<"DEBUG OUTPUT 2"<<endl;
+    if(odd->next->next==NULL && even->next==NULL){
+        odd->next = evenStart;
+        return temp;
+    }
+    if(odd->next==NULL && even->next->next==NULL){
+        odd->next = evenStart;
+        even->next = NULL;
+        return temp;
+    }
+    cout<<"DEBUG OUTPUT 3"<<endl;
+    return temp;
+}
+
 int main(){
     node * head = NULL;
-    insertAtTale(head,1);
-    insertAtTale(head,2);
-    insertAtTale(head,3);
+    node * newhead = NULL;
+    for(int i=1;i<=6;i++){
+        insertAtTale(head,i);
+    }
     display(head);
-    insertAtHead(head,0);
-    display(head);
-    insertAtHead(head,4);
-    display(head);
-    cout<<searchList(head, 5)<<endl;
-    cout<<searchList(head,0)<<endl;
-    deleteNode(head,3);
-    display(head);
-    deleteNode(head,1);
-    display(head);
-    deleteNode(head,4);
-    display(head);
-// }
+    newhead = odd_even(head);
+    display(newhead);
+}

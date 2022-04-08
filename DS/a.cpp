@@ -1,4 +1,5 @@
 #include<iostream>
+#include "a.h"
 using namespace std;
 
 class node{
@@ -19,7 +20,6 @@ void insertAtHead(node * &head, int val){
 }
 
 void insertAtTale(node * &head, int val){// &head bcz we will be modifying the head
-
     node * n = new node(val);
 
     if(head==NULL){
@@ -76,23 +76,3 @@ void deleteNode(node * &head, int val){
     temp->next = (temp->next)->next;
     delete todelete; //works like free() we had in c which is used to free the space in heap
 }
-
-int main(){
-    node * head = NULL;
-    insertAtTale(head,1);
-    insertAtTale(head,2);
-    insertAtTale(head,3);
-    display(head);
-    insertAtHead(head,0);
-    display(head);
-    insertAtHead(head,4);
-    display(head);
-    cout<<searchList(head, 5)<<endl;
-    cout<<searchList(head,0)<<endl;
-    deleteNode(head,3);
-    display(head);
-    deleteNode(head,1);
-    display(head);
-    deleteNode(head,4);
-    display(head);
-// }
