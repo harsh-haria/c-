@@ -78,7 +78,6 @@ void deleteNode(node * &head, int val){
 }
 
 int main(){
-
     node * head = NULL;
     insertAtTale(head,1);
     insertAtTale(head,2);
