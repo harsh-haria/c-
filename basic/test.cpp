@@ -3,31 +3,34 @@
 #include<algorithm>
 using namespace std;
 
-string bi2dec(string s){
-    // int len = s.length();
-    long mod = 0;
-    long num = stoi(s);
-    string newstr = "";
-    while(num){
-        mod = num%2;
-        num/=2;
-        newstr = to_string(mod) + newstr; 
+class ListNode{
+    public:
+    int val;
+    ListNode *next;
+    ListNode(int x=0){
+        val = x;
+        next = NULL;
     }
-    long newlen = newstr.length();
-    for(int i=0;i<32-newlen;i++){
-        newstr = "0"+newstr;
+
+};
+
+void insertAtTale(ListNode * &head, int val){// &head bcz we will be modifying the head
+
+    ListNode * n = new ListNode(val);
+
+    if(head==NULL){
+        head = n;
+        return;
     }
-    // cout<<newstr<<endl;
-    return newstr;
+
+    ListNode * temp = head;
+    while(temp->next!=NULL){
+        temp = temp->next;
+    }
+    temp->next = n;
+    //no need to put null in n->next bcz we have already did it in constructor
 }
 
 int main(){
-    vector <int> A;
-    vector<int>v[100003];
-    bool visit[100003];
-
-    for(int i = 0; i < A.size(); ++i )
-        v[i].push_back(A[i]-1), v[A[i]-1].push_back(i);
-
-    //not sure whats going on :/
+    ListNode * head = NULL;
 }

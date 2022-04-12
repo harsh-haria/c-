@@ -1,6 +1,6 @@
 //arrange the nodes of the linked list in a odd even order 
 #include<iostream>
-#include "a.h"
+// #include "a.h"
 using namespace std;
 //program is still buggy
 class node{
@@ -93,8 +93,8 @@ node* odd_even(node * &head){
     if(odd->next!=NULL){
         even->next = NULL;
     }
-    // return head;
-    cout<<"DEBUG OUTPUT 2"<<endl;
+    return temp;
+    // cout<<"DEBUG OUTPUT 2"<<endl;
     if(odd->next->next==NULL && even->next==NULL){
         odd->next = evenStart;
         return temp;
@@ -111,7 +111,7 @@ node* odd_even(node * &head){
 int main(){
     node * head = NULL;
     node * newhead = NULL;
-    for(int i=1;i<=6;i++){
+    for(int i=1;i<=7;i++){
         insertAtTale(head,i);
     }
     display(head);

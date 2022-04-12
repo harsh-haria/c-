@@ -9,5 +9,14 @@ int main(){
         insertAtTale(head,i);
     }
     display(head);
-
+    node * temp = head;
+    // int val = 5;
+    while(1){
+        if(temp->data == 5){
+            break;
+        }
+        temp = temp->next;
+    }
+    deleteNode(temp);
+    display(head);
 }

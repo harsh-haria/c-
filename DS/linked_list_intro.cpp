@@ -11,7 +11,6 @@ class node{
             next = NULL;
         }
 };
-
 void insertAtHead(node * &head, int val){
     node * n = new node(val);
     n->next = head;
@@ -77,22 +76,31 @@ void deleteNode(node * &head, int val){
     delete todelete; //works like free() we had in c which is used to free the space in heap
 }
 
-int main(){
-    node * head = NULL;
-    insertAtTale(head,1);
-    insertAtTale(head,2);
-    insertAtTale(head,3);
-    display(head);
-    insertAtHead(head,0);
-    display(head);
-    insertAtHead(head,4);
-    display(head);
-    cout<<searchList(head, 5)<<endl;
-    cout<<searchList(head,0)<<endl;
-    deleteNode(head,3);
-    display(head);
-    deleteNode(head,1);
-    display(head);
-    deleteNode(head,4);
-    display(head);
+void deleteNode(node* temp){
+    if(temp->next==NULL){
+        delete temp;
+    }
+    while(temp->next->next!=NULL){
+
+    }
+}
+
+// int main(){
+//     node * head = NULL;
+//     insertAtTale(head,1);
+//     insertAtTale(head,2);
+//     insertAtTale(head,3);
+//     display(head);
+//     insertAtHead(head,0);
+//     display(head);
+//     insertAtHead(head,4);
+//     display(head);
+//     cout<<searchList(head, 5)<<endl;
+//     cout<<searchList(head,0)<<endl;
+//     deleteNode(head,3);
+//     display(head);
+//     deleteNode(head,1);
+//     display(head);
+//     deleteNode(head,4);
+//     display(head);
 // }
