@@ -4,8 +4,11 @@
 #include<vector>
 using namespace std;
 
-void reverseString(vector<char> &s){
-    
+int nthTermOfGP(int N, int A, int R) {
+    if(N==0){
+		return A;
+	}
+	return nthTermOfGP(N-1,A,R*A);
 }
 
 int main(){
@@ -20,7 +23,7 @@ int main(){
         cout<<i;
     }
     cout<<endl;
-    reverseString(s); //reverse
+    // reverseString(s); //reverse
     for(auto i:s){
         cout<<i;
     }
