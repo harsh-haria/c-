@@ -11,6 +11,7 @@ class node{
             next = NULL;
         }
 };
+
 void insertAtHead(node * &head, int val){
     node * n = new node(val);
     n->next = head;
@@ -83,6 +84,29 @@ void deleteNode(node* temp){
     while(temp->next->next!=NULL){
 
     }
+}
+
+node* reverse_without_rec(node* &head){
+    node* prev = NULL;
+    node* curr = head;
+    node* next = NULL;
+    while(curr){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}
+
+node* reverse_with_rec(node* &head){
+    if(head==NULL or head->next==NULL){
+        return head;
+    }
+    node* newhead = reverse_with_rec(head->next);
+    (head->next)->next = head;
+    head->next = NULL;
+    return newhead;
 }
 
 // int main(){

@@ -36,7 +36,6 @@ node* reverseArrayRec(node * &head){
     node * newhead = reverseArrayRec(head->next);
     (head->next)->next = head;
     head->next = NULL;
-
     return newhead;
 }
 
