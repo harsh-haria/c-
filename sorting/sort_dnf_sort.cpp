@@ -5,7 +5,7 @@
 #include<iostream>
 using namespace std;
 
-void dnf(int arr[], int n,int a,int b,int c){
+void dnf(int arr[], int n, int a, int b, int c){
     int low=0, mid=0, high=n-1;
     while(mid<=high){
         if(arr[mid]==a){
