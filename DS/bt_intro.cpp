@@ -23,7 +23,7 @@ node* createNode(int x){
     return temp;
 }
 
-void traverse_inorder(node* root){
+void traverse_inorder(node* root){  //DFT
     if(root){
         traverse_inorder(root->left);
         cout<<root->data<<" ";
@@ -31,7 +31,7 @@ void traverse_inorder(node* root){
     }
 }
 
-void traverse_preorder(node* root){
+void traverse_preorder(node* root){ //DFT
     if(root){
         cout<<root->data<<" ";
         traverse_preorder(root->left);
@@ -39,7 +39,7 @@ void traverse_preorder(node* root){
     }
 }
 
-void traverse_postorder(node* root){
+void traverse_postorder(node* root){ //DFT
     if(root){
         traverse_postorder(root->left);
         traverse_postorder(root->right);
@@ -201,65 +201,60 @@ void maxNode(node* root, int* max){
     maxNode(root->right,max);
 }
 
-int main(){
-    // node* root = new node(3);
-    // cout<<root->data<<endl;
-    // root->left = createNode(2);
-    // root->right = createNode(3);
-    // root->left->left = createNode(4);
-    // root->left->right = createNode(5);
-    // root->right->left = createNode(6);
-    // root->right->right = createNode(7);
-    // traverse_preorder(root);
-    // cout<<endl;
-    // traverse_inorder(root);
-    // cout<<endl;
-    // traverse_postorder(root);
-    // cout<<endl;
-    // node* x = searchLevelOrder(root,3);
-    // cout<<x<<endl;
-    // cout<<x->data<<endl;
-    // cout<<x->left->data<<endl;
-    // cout<<x->right->data<<endl;
-    
-    /*
-    node* root = new node(1);
-    // insertNode(root,createNode(1));
-    insertNode(root,createNode(2));
-    insertNode(root,createNode(3));
-    insertNode(root,createNode(4));
-    insertNode(root,createNode(5));
-    insertNode(root,createNode(6));
-    insertNode(root,createNode(7));
+int number_of_nodes(node* root){
+    if(!root){
+        return 0;
+    }
+    return 1 + number_of_nodes(root->left) + number_of_nodes(root->right);
+}
 
-    traverse_inorder(root);
-    cout<<endl;
-    traverse_preorder(root);
-    cout<<endl;
-    cout<<root->right->left->data<<endl;
-    cout<<root->left->left->data<<endl;
-    */
+int number_of_non_leaves(node* root){
+    if(root){
+        if(root->left==NULL and root->right==NULL){
+            return 0;
+        }
+        return 1 + number_of_non_leaves(root->left) + number_of_non_leaves(root->right);
+    }
+    return 0;
+}
 
-    node* root = createNode(1);
-    for(int i=2;i<=15;i++){
-        insertNode(root,createNode(i));
-    }   
-    // traverse_inorder(root);
-    // cout<<endl;
-    // deleteNode(root,7);
-    // deleteNode(root,6);
-    // deleteNode(root,9);
-    // deleteNode(root,1);
-    // traverse_inorder(root);
-    // cout<<endl;
-    // BFS(root);
-    // cout<<endl;
-    // printMyTree(root,5);
-    traverse_inorder(root);
-    cout<<endl;
-    deleteNode(root,2);
-    int max = root->data;
-    maxNode(root,&max);
-    cout<<endl;
-    cout<<max<<endl;
+int number_of_leaves(node* root){
+    if(root){
+        if(root->left==NULL and root->right==NULL){
+            return 1;
+        }
+        return number_of_leaves(root->left) + number_of_leaves(root->right);
+    }
+    return 0;
+}
+
+int number_of_full_nodes_REC(node* root){
+    if(!root or (!root->left and !root->right)){
+        return 0;
+    }
+    if(root->left and root->right){
+        return 1 + number_of_full_nodes_REC(root->left) + number_of_full_nodes_REC(root->right);
+    }
+    return number_of_full_nodes_REC(root->left) + number_of_full_nodes_REC(root->right);
+}
+
+int height_of_tree(node* root){
+    if(!root){
+        return 0;
+    }
+    else if(!root->left and !root->right){
+        return 0;
+    }
+    else{
+        int l,r;
+        l = height_of_tree(root->left);
+        r = height_of_tree(root->right);
+        if(l>r){
+            return 1 + l;
+        }
+        else{
+            return 1 + r;
+        }
+    }
+    return 0;
 }
