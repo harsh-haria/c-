@@ -72,6 +72,46 @@ node* searchLevelOrder(node* root, int key){//also called as BFT
     return out;
 }
 
+void BFS(node* root){
+    if(!root){
+        return;
+    }
+    queue<node*> q;
+    q.push(root);
+    while(!q.empty()){
+        node* temp = q.front();
+        q.pop();
+        cout<<temp->data<<" ";
+        if(temp->left){
+            q.push(temp->left);
+        }
+        if(temp->right){
+            q.push(temp->right);
+        }
+    }
+}
+
+string BFSRecursive(node* root, int level){
+    if(!root){
+        return "-";
+    }
+    if(level == 1){
+        return to_string(root->data);
+    }
+    if(level>1){
+        return BFSRecursive(root->left, level-1) + " " + BFSRecursive(root->right, level-1);
+    }
+    return "";
+}
+
+void printMyTree(node* root, int height){
+    if(height == 0){
+        return;
+    }
+    printMyTree(root,height-1);
+    cout<<BFSRecursive(root,height)<<" ";
+}
+
 void insertNode(node* &root, node* nod){
     if(!root){
         root = nod;
@@ -147,6 +187,20 @@ void deleteNode(node* root, int key){
     nodeToDelete->data = extremeKey;
 }
 
+void maxNode(node* root, int* max){
+    if(root == NULL){
+        return;
+    }
+    cout<<root->data<<" ";
+    if(*max < root->data){
+        *max = root->data;
+        cout<<"update\n";
+    }
+
+    maxNode(root->left,max);
+    maxNode(root->right,max);
+}
+
 int main(){
     // node* root = new node(3);
     // cout<<root->data<<endl;
@@ -187,15 +241,25 @@ int main(){
     */
 
     node* root = createNode(1);
-    for(int i=2;i<=7;i++){
+    for(int i=2;i<=15;i++){
         insertNode(root,createNode(i));
     }   
+    // traverse_inorder(root);
+    // cout<<endl;
+    // deleteNode(root,7);
+    // deleteNode(root,6);
+    // deleteNode(root,9);
+    // deleteNode(root,1);
+    // traverse_inorder(root);
+    // cout<<endl;
+    // BFS(root);
+    // cout<<endl;
+    // printMyTree(root,5);
     traverse_inorder(root);
     cout<<endl;
-    deleteNode(root,7);
-    deleteNode(root,6);
-    deleteNode(root,9);
-    deleteNode(root,1);
-    traverse_inorder(root);
+    deleteNode(root,2);
+    int max = root->data;
+    maxNode(root,&max);
     cout<<endl;
+    cout<<max<<endl;
 }
