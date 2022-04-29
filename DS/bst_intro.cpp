@@ -44,22 +44,9 @@ void searchBst(node* root, int key){
     }
 }
 
-void deleteBst(node* root, int key){
-    if(!root){
-        cout<<endl<<"Element not found :( ";
-        return root;
-    }
-    if(root->data > key){
-        deleteBst(root->left,key);
-    }
-    if(root->data < key ){
-        deleteBst(root->right,key);
-    }
-}
 
 
 int main(){
-
     node* root = createNode(8);
     root->left = createNode(4);
     root->right = createNode(10);
