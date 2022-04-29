@@ -162,6 +162,27 @@ void deleteExtremeRightNode(node* root, node* extremeRight){
     }
 }
 
+node* getRightmostElement(node* root){
+    if(!root){
+        return root;
+    }
+    queue<node*> q;
+    q.push(root);
+    node* out;
+    while(!q.empty()){
+        node* temp = q.front();
+        out = temp;
+        q.pop();
+        if(temp->left){
+            q.push(temp->left);
+        }
+        if(temp->right){
+            q.push(temp->right);
+        }
+    }
+    return out;
+}
+
 void deleteNode(node* root, int key){
     node* nodeToDelete = searchLevelOrder(root,key);
     if(!nodeToDelete){
