@@ -8,7 +8,7 @@ int interpolation(int arr[], int n, int key){
     int start = 0;
     int end = n-1;
     int pos;
-    while(start<=end and key>=arr[start] and key<=arr[end]){
+    while(start<=end and (key>=arr[start] and key<=arr[end])){
         pos = start + ( ( (double)(end-start) / (arr[end]-arr[start] ) ) * (key-arr[start]));
         if(arr[pos] == key){
             return pos;

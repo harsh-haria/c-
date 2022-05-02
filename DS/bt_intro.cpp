@@ -260,22 +260,36 @@ int number_of_full_nodes_REC(node* root){
 }
 
 int height_of_tree(node* root){
+    if(!root ){
+        return 0;
+    }
+    int l = height_of_tree(root->left);
+    int r = height_of_tree(root->right);
+    return 1 + max(l,r);
+    
+}
+
+int SUM(node* root){
     if(!root){
         return 0;
     }
-    else if(!root->left and !root->right){
+    return root->data + SUM(root->left) + SUM(root->right);
+}
+
+int diameter1(node* root){
+    //time complexity: O(N*N)
+    if(!root){
         return 0;
     }
-    else{
-        int l,r;
-        l = height_of_tree(root->left);
-        r = height_of_tree(root->right);
-        if(l>r){
-            return 1 + l;
-        }
-        else{
-            return 1 + r;
-        }
-    }
-    return 0;
+    int diam1 = height_of_tree(root->left);
+    int diam2 = height_of_tree(root->right);
+    cout<<"Height of left and right is: "<<diam1<<" "<<diam2<<endl;
+    int a = 0, b = 0;
+    a =  diameter1(root->left);
+    b = diameter1(root->right);
+    cout<<"returnable: "<<root->data<<"  "<<a<<" "<<b<<" "<<1+diam1+diam2<<endl;
+    return max(max(a,b),1+diam1+diam2);
 }
+
+
+
