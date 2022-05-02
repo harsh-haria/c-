@@ -12,17 +12,21 @@ using namespace std;
 
 const int N = 1e5+2, MOD = 1e9+7;
 
-signed main(){
+int main(){
     int n,m;
     cin>>n>>m;
 
     vvi adjm(n+1,vi(n+1,0)); 
+    vi adj[100];
+
 //first parameter is size of row, second of first is size of columns and second of second is initializing to 0 
     rep(i,0,m){
         int x,y;
         cin>>x>>y;
         adjm[x][y] = 1;
         adjm[y][x] = 1;
+        adj[x].push_back(y);
+        adj[y].push_back(x);
     }
     cout<<"The Adjacency matrix of the above graph is given by: "<<endl;
     rep(i,1,n+1){//from one because we are not using adjm[0][x] or adjm[x][0]
@@ -31,6 +35,15 @@ signed main(){
         }
         cout<<endl;
     }
+    
+    //now lets look at the adjecency list implementation of the Graph
 
-    //now lets look at the adjecency list implementation of the 
+    cout<<"Lets see how the adjacency list looks like: "<<endl;
+    rep(i,1,n+1){
+        cout<<i<<" -> ";
+        for(auto x:adj[i]){
+            cout<<x<<" ";
+        }
+        cout<<endl;
+    }
 }

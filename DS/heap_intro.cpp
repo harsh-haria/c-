@@ -50,7 +50,6 @@ class heap{
                 cout<<"i: "<<i<<endl;
                 maxHeapify(arr,i);
                 displayHeap();
-                
             }
         }
 };
