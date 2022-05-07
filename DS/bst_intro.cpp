@@ -57,7 +57,7 @@ int main(){
     root->left->right->left = createNode(5);
     root->left->right->right = createNode(7);
     BFS(root);
-    deleteBst(root,7);
+    // deleteBst(root,7);
     cout<<endl;
     BFS(root);
     cout<<endl;
