@@ -10,7 +10,7 @@ int ceilSearch(int arr[],int low,int high,int x){
     if(arr[mid]==x){
         return arr[mid];
     }
-    else if(arr[mid+1]<=high and x<=){
+    else if(arr[mid+1]<=high and x){
 
     }
 
