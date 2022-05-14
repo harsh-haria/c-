@@ -1,7 +1,7 @@
 //find 2 unique numbers in array using bit manipulation
 //first xor all the numbers
-//we will get a number. store it(x). now wherever we get set bit in that number. remember the position of it.
-//now in array whatever digit has set bits at that position perform xor on all those elements. store it(y). 
+//we will get a number. store it(x). now wherever we get rightmost set bit in that number. remember the position of it.
+//now in array whichever digit has set bits at that position perform xor on all those elements. store it(y). 
 //here we will get our first number
 //finally we need to perfrom exor on (x) (y)
 //this will give us the second number.
@@ -11,7 +11,6 @@ using namespace std;
 string find_elements(int a[],int n){
     int xoro1=0;
     int xoro2=0;
-    int xoro3=0;
     int setbit = 0;
     int newarr[n];
     for(int i=0;i<n;i++){
