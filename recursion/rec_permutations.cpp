@@ -19,5 +19,5 @@ void per(string s,string ans=""){
 }
 
 int main(){
-    per("ABC");
+    per("123");
 }
