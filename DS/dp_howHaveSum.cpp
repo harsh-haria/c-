@@ -4,6 +4,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void howSum(int target, vector<int> nums, vector<int> tempAns,
+    vector<vector<int>> &ans, vector<pair<int,bool>> &map){
+    if(target == 0){
+        map.push_back({target,true});
+        if(ans.empty()){
+            ans.push_back(tempAns);
+        }
+        else{
+            if(ans[0].size()>tempAns.size()){
+                ans.pop_back();
+                ans.push_back(tempAns);
+            }
+        }
+        return;
+    }
+    if (target < 0){
+        map.push_back({target,false});
+        // return false;
+        return;
+    }
+
+    for(auto i:map){
+        if(i.first == target){
+            if(i.second==false){
+                // return false;
+                return;
+            }
+        }
+    }
+
+    for(auto i:nums){
+        tempAns.push_back(i);
+        howSum(target-i, nums,tempAns, ans, map);
+        tempAns.pop_back();
+    }
+}
+
 int main()
 {
     int targetSum;
@@ -18,12 +55,19 @@ int main()
         numbers.push_back(temp);
     }
     // input till here
-    vector<int> ans;
-    howSum(targetSum, numbers, ans);
-    // cout<<ans<<endl;
-    for (auto i : ans)
-    {
-        cout << i << " ";
+    vector<vector<int>> ans;
+    vector<int> tempAns;
+    vector<pair<int,bool>> map;
+    howSum(targetSum, numbers, tempAns, ans, map);
+    if(ans.size()<1){
+        cout<<"NULL"<<endl;
+        return 0;
+    }
+    for(auto i:ans){
+        for(auto j:i){
+            cout<<j<<" ";
+        }
+        cout<<endl;
     }
     return 0;
 }
