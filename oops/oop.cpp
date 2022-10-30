@@ -5,15 +5,16 @@ using namespace std;
 class CanAsk
 {
     virtual void AskForPromotion() = 0;
+    virtual void AskForHike() = 0;
 };
 
 class Employee : CanAsk
 {
-    string Company;
-    int Age;
 
 protected:
     string Name;
+    string Company;
+    int Age;
 
 public:
     string getName()
@@ -43,6 +44,11 @@ public:
         Age = age;
     }
 
+    Employee()
+    {
+        cout << "Defualt constructor called" << endl;
+    }
+
     Employee(string name, string company, int age)
     {
         Age = age;
@@ -59,6 +65,13 @@ public:
             cout << Name << " can be promoted!" << endl;
         else
             cout << Name << ", sorry NO promotion for you!" << endl;
+    }
+    void AskForHike()
+    {
+        if (Age >= 20)
+            cout << Name << " can get a salary hike :)" << endl;
+        else
+            cout << Name << ", Sorry no hike for you" << endl;
     }
     virtual void work()
     {
@@ -107,28 +120,42 @@ public:
 
 int main()
 {
-    // Employee emp1 = Employee("Harsh", "Umemployed", 22);
-    // emp1.AskForPromotion();
-    // Employee emp2 = Employee("Harsh", "Cimpress", 23);
-    // emp2.AskForPromotion();
-    // Employee emp3 = Employee("Chirag", "Textile", 39);
-    // emp3.AskForPromotion();
-    Developer d1 = Developer("Harsh", "NULL", 22, "C++");
-    d1.fixBug();
-    d1.AskForPromotion();
-    Teacher teacher1 = Teacher("Ashwin", "Spoon", 31, "Backend Web Development");
-    teacher1.PrepareLesson();
-    teacher1.AskForPromotion();
 
-    // polymorphism
+    Employee emp1;
+    emp1.setName("Harsh");
+    emp1.setAge(23);
+    emp1.setCompany("Looking for Job opportunities");
+    emp1.printData();
+
+    // copy constructor
+    Employee emp2 = emp1;
+    emp2.printData();
+    Employee emp3(emp1);
+    emp3.printData();
+
+    // // Employee emp1 = Employee("Harsh", "Umemployed", 22);
+    // // emp1.AskForPromotion();
+    // // Employee emp2 = Employee("Harsh", "Cimpress", 23);
+    // // emp2.AskForPromotion();
+    // // Employee emp3 = Employee("Chirag", "Textile", 39);
+    // // emp3.AskForPromotion();
+    // Developer dev1 = Developer("Harsh", "NULL", 22, "C++");
+    // dev1.fixBug();
+    // dev1.AskForPromotion();
+    // dev1.AskForHike();
+    // Teacher teacher1 = Teacher("Ashwin", "Spoon", 31, "Backend Web Development");
+    // teacher1.PrepareLesson();
+    // teacher1.AskForPromotion();
+
+    // // polymorphism
     // teacher1.work();
-    // d1.work();
-    /*
-        The most common use of polymorphism is when a parent class reference
-        is used to refer to a child class object
-    */
-    Employee *employee1 = &teacher1;
-    Employee *employee2 = &d1;
-    employee1->work();
-    employee2->work();
+    // dev1.work();
+    // /*
+    //     The most common use of polymorphism is when a parent class reference
+    //     is used to refer to a child class object
+    // */
+    // Employee *employee1 = &teacher1;
+    // Employee *employee2 = &dev1;
+    // employee1->work();
+    // employee2->work();
 }
