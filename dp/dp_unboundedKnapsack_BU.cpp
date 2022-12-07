@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int unboundedKnapsack(vector<int> arr, int capacity, int n)
+int unboundedKnapsack(vector<int> arr, vector<int> wt, int capacity, int n)
 {
     vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, -1));
     for (int i = 0; i < n + 1; i++)
@@ -16,9 +16,9 @@ int unboundedKnapsack(vector<int> arr, int capacity, int n)
     {
         for (int j = 1; j < capacity + 1; j++)
         {
-            if (arr[i - 1] <= j)
+            if (wt[i - 1] <= j)
             {
-                dp[i][j] = max(dp[i - 1][j], arr[i - 1] + dp[i][j - arr[i - 1]]);
+                dp[i][j] = max(dp[i - 1][j], arr[i - 1] + dp[i][j - wt[i - 1]]);
             }
             else
             {
@@ -32,8 +32,9 @@ int unboundedKnapsack(vector<int> arr, int capacity, int n)
 int main()
 {
     vector<int> arr = {1, 1, 3, 4};
+    vector<int> wt = {1, 2, 3, 4};
     int capacity = 13;
     int n = arr.size();
-    int answer = unboundedKnapsack(arr, capacity, n);
+    int answer = unboundedKnapsack(arr, wt, capacity, n);
     cout << "Max profit in the knapsack is " << answer << endl;
 }
