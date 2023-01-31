@@ -1,2 +1,2 @@
 # c-plus-plus
-practice programs in c++
+DSA practice programs in c++
